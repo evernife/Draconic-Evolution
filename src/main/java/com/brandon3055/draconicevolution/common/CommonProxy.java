@@ -52,7 +52,6 @@ public class CommonProxy {
         registerEventListeners(event.getSide());
         ModBlocks.init();
         ModItems.init();
-        ContributorHandler.init();
         registerTileEntities();
         initializeNetwork();
         registerOres();
@@ -126,8 +125,6 @@ public class CommonProxy {
         DraconicEvolution.network.registerMessage(ToolModePacket.Handler.class, ToolModePacket.class, 14, Side.SERVER);
         DraconicEvolution.network.registerMessage(GenericParticlePacket.Handler.class, GenericParticlePacket.class, 15, Side.CLIENT);
         DraconicEvolution.network.registerMessage(ShieldHitPacket.Handler.class, ShieldHitPacket.class, 16, Side.CLIENT);
-        DraconicEvolution.network.registerMessage(ContributorPacket.Handler.class, ContributorPacket.class, 17, Side.CLIENT);
-        DraconicEvolution.network.registerMessage(ContributorPacket.Handler.class, ContributorPacket.class, 18, Side.SERVER);
 
     }
 

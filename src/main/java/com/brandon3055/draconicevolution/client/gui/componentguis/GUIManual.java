@@ -3,13 +3,11 @@ package com.brandon3055.draconicevolution.client.gui.componentguis;
 import com.brandon3055.brandonscore.client.gui.guicomponents.*;
 import com.brandon3055.brandonscore.client.utills.ClientUtills;
 import com.brandon3055.brandonscore.common.utills.InfoHelper;
-import com.brandon3055.draconicevolution.client.gui.guicomponents.ComponentContributorsPage;
 import com.brandon3055.draconicevolution.client.gui.guicomponents.ComponentIndexButton;
 import com.brandon3055.draconicevolution.client.gui.guicomponents.ComponentManualPage;
 import com.brandon3055.draconicevolution.client.handler.ResourceHandler;
 import com.brandon3055.draconicevolution.common.container.DummyContainer;
 import com.brandon3055.draconicevolution.common.handler.ConfigHandler;
-import com.brandon3055.draconicevolution.common.handler.ContributorHandler;
 import com.brandon3055.draconicevolution.common.lib.References;
 import com.brandon3055.draconicevolution.common.utills.LogHelper;
 import com.google.gson.stream.JsonReader;
@@ -64,7 +62,6 @@ public class GUIManual extends GUIScrollingBase implements GuiYesNoCallback {
         if (!Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode().equals(lang))
             loadPages();
 
-        LogHelper.info(ContributorHandler.contributors);
     }
 
     private void adjustGuiScale() {
@@ -126,7 +123,6 @@ public class GUIManual extends GUIScrollingBase implements GuiYesNoCallback {
 
         collection.addComponent(new ComponentButton(75, 260, 100, 20, 0, this, StatCollector.translateToLocal("info.de.manual.indexButton.txt"), StatCollector.translateToLocal("info.de.manual.indexButtonTip.txt"))).setGroup(GR_INTRO);
         collection.addComponent(new ComponentButton(75, 285, 100, 20, 2, this, StatCollector.translateToLocal("info.de.manual.contributorsButton.txt"), StatCollector.translateToLocal("info.de.manual.contributorsButtonInfo.txt"))).setGroup(GR_INTRO);
-        collection.addComponent(new ComponentContributorsPage(0, 0, this)).setGroup(GR_CONTRIBUTORS).setName("CONTRIBUTORS");
 
         collection.addComponent(new ComponentTextureButton(140, 290, 0, 0, 100, 30, 10, this, "", "", ResourceHandler.getResource("textures/gui/patreon.png")).forceFullRender()).setGroup(GR_CONTRIBUTORS);
 
@@ -153,9 +149,6 @@ public class GUIManual extends GUIScrollingBase implements GuiYesNoCallback {
             if (pageLength + 40 <= ySize) scrollOffset = 0;
 
             barPosition = (int) (((double) scrollOffset / scrollLimit) * 247D);
-        } else if (collection.getComponent("CONTRIBUTORS") != null && collection.getComponent("CONTRIBUTORS").isEnabled()) {
-            ComponentContributorsPage page = (ComponentContributorsPage) collection.getComponent("CONTRIBUTORS");
-            barPosition = (int) (((double) page.scrollOffset / page.scrollLimit) * 247D);
         } else if (collection.getComponent("OPEN_PAGE") != null && collection.getComponent("OPEN_PAGE").isEnabled()) {
             ComponentManualPage page = (ComponentManualPage) collection.getComponent("OPEN_PAGE");
             barPosition = (int) (((double) page.scrollOffset / page.scrollLimit) * 247D);
@@ -195,9 +188,6 @@ public class GUIManual extends GUIScrollingBase implements GuiYesNoCallback {
 
         if (!scrollPressed && collection.getComponent("INDEX_BUTTON_0") != null && collection.getComponent("INDEX_BUTTON_0").isEnabled()) {
             barPosition = (int) (((double) scrollOffset / scrollLimit) * 247D);
-        } else if (!scrollPressed && collection.getComponent("CONTRIBUTORS") != null && collection.getComponent("CONTRIBUTORS").isEnabled()) {
-            ComponentContributorsPage page = (ComponentContributorsPage) collection.getComponent("CONTRIBUTORS");
-            barPosition = (int) (((double) page.scrollOffset / page.scrollLimit) * 247D);
         } else if (!scrollPressed && collection.getComponent("OPEN_PAGE") != null && collection.getComponent("OPEN_PAGE").isEnabled()) {
             ComponentManualPage page = (ComponentManualPage) collection.getComponent("OPEN_PAGE");
             barPosition = (int) (((double) page.scrollOffset / page.scrollLimit) * 247D);
@@ -420,11 +410,7 @@ public class GUIManual extends GUIScrollingBase implements GuiYesNoCallback {
     public void barMoved(double position) {
         if (collection.getComponent("INDEX_BUTTON_0") != null && collection.getComponent("INDEX_BUTTON_0").isEnabled())
             scrollOffset = (int) (position * scrollLimit);
-        else if (collection.getComponent("CONTRIBUTORS") != null && collection.getComponent("CONTRIBUTORS").isEnabled()) {
-            ComponentContributorsPage page = (ComponentContributorsPage) collection.getComponent("CONTRIBUTORS");
-            if (page.scrollLimit < 0) return;
-            page.scrollOffset = (int) (position * page.scrollLimit);
-        } else if (collection.getComponent("OPEN_PAGE") != null && collection.getComponent("OPEN_PAGE").isEnabled()) {
+        else if (collection.getComponent("OPEN_PAGE") != null && collection.getComponent("OPEN_PAGE").isEnabled()) {
             ComponentManualPage page = (ComponentManualPage) collection.getComponent("OPEN_PAGE");
             if (page.scrollLimit < 0) return;
             page.scrollOffset = (int) (position * page.scrollLimit);

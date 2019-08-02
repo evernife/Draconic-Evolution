@@ -33,11 +33,6 @@ public class FMLEventHandler {
     }
 
     @SubscribeEvent
-    public void serverTickEvent(TickEvent event) {
-        ContributorHandler.tick();
-    }
-
-    @SubscribeEvent
     public void playerLogin(PlayerEvent.PlayerLoggedInEvent event) {
         if (!event.player.onGround) {
             CustomArmorHandler.ArmorSummery summery = new CustomArmorHandler.ArmorSummery().getSummery(event.player);
@@ -52,7 +47,5 @@ public class FMLEventHandler {
             event.player.addChatComponentMessage(new ChatComponentText("Hello Dez! Here have a Marshmallow"));
             event.player.worldObj.spawnEntityInWorld(new EntityItem(event.player.worldObj, event.player.posX, event.player.posY, event.player.posZ, new ItemStack(ModItems.dezilsMarshmallow)));
         }
-
-        ContributorHandler.onPlayerLogin(event);
     }
 }

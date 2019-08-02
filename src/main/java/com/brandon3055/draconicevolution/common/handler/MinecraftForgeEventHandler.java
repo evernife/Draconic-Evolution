@@ -1,6 +1,7 @@
 package com.brandon3055.draconicevolution.common.handler;
 
 
+import br.com.finalcraft.draconicevolution.util.FCArmorHandler;
 import com.brandon3055.brandonscore.common.handlers.ProcessHandler;
 import com.brandon3055.brandonscore.common.utills.DataUtills;
 import com.brandon3055.brandonscore.common.utills.ItemNBTHelper;
@@ -128,10 +129,11 @@ public class MinecraftForgeEventHandler {
         }
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGH, receiveCanceled = false)
     public void onLivingHurt(LivingHurtEvent event) {
         if (event.entityLiving instanceof EntityPlayer) {
             CustomArmorHandler.onPlayerHurt(event);
+            FCArmorHandler.onPlayerHurt(event);
         }
     }
 

@@ -3,7 +3,6 @@ package com.brandon3055.draconicevolution.integration;
 import com.brandon3055.draconicevolution.common.items.armor.CustomArmorHandler.ArmorSummery;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
-import gregtech.common.blocks.GT_TileEntity_Ores;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
@@ -80,12 +79,6 @@ public class ModHelper {
         }
 
         return event.ammount;
-    }
-
-    public static boolean isGregTechTileEntityOre(TileEntity te) {
-        if (!isGregTechInstalled) return false;
-        else if (te instanceof gregtech.common.blocks.GT_TileEntity_Ores) return true;
-        else return false;
     }
 
 }

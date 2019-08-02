@@ -168,7 +168,7 @@ public abstract class MiningTool extends ToolBase implements IUpgradableItem {
                 for (int yPos = y + yOffset - yMin; yPos <= y + yOffset + yMax; yPos++) {
                     for (int zPos = z - zMin; zPos <= z + zMax; zPos++) {
                         TileEntity te = player.worldObj.getTileEntity(xPos, yPos, zPos); 
-                        if (te != null && !ModHelper.isGregTechTileEntityOre(te)) {
+                        if (te != null) {
                             if (player.worldObj.isRemote) {
                                 player.addChatComponentMessage(new ChatComponentTranslation("msg.de.baseSafeAOW.txt"));
                             } else

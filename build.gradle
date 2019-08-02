@@ -25,7 +25,7 @@ repositories {
 }
 
 apply plugin: 'forge'
-apply plugin: 'signing'
+//apply plugin: 'signing'
 
 // Define properties file
 ext.configFile = file "build.properties"
@@ -83,7 +83,7 @@ idea {
     }
 }
 
-task deobfJar(type: Jar) { // Generate deobfuscated
+/*task deobfJar(type: Jar) { // Generate deobfuscated
     from sourceSets.main.output
     classifier = 'deobf'
 }
@@ -94,13 +94,14 @@ task sourceJar(type: Jar) { // Generate sources
 }
 
 tasks.build.dependsOn('sourceJar', 'deobfJar')
-
+*/
 artifacts {
-   archives deobfJar
-   archives sourceJar
+   //archives deobfJar
+   //archives sourceJar
    archives jar
 }
 
+/*
 task signJar(dependsOn: 'reobf'){
     doLast {
         ant.signjar(
@@ -114,4 +115,4 @@ task signJar(dependsOn: 'reobf'){
             verbose: true
             )
     }
-}
+}*/

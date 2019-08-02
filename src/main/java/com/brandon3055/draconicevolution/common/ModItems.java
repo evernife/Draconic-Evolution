@@ -1,5 +1,7 @@
 package com.brandon3055.draconicevolution.common;
 
+import br.com.finalcraft.draconicevolution.items.armor.NeutroniumT2Armor;
+import br.com.finalcraft.draconicevolution.util.ThaumCraftPortalSpawner;
 import com.brandon3055.draconicevolution.common.handler.ConfigHandler;
 import com.brandon3055.draconicevolution.common.items.*;
 import com.brandon3055.draconicevolution.common.items.armor.DraconicArmor;
@@ -48,6 +50,11 @@ public class ModItems {
     public static ItemArmor wyvernLeggs;
     public static ItemArmor wyvernBoots;
 
+    public static ItemArmor neutroniumT2Helm;
+    public static ItemArmor neutroniumT2Chest;
+    public static ItemArmor neutroniumT2Leggs;
+    public static ItemArmor neutroniumT2Boots;
+
     public static Item dezilsMarshmallow;
 
     public static ItemDE wyvernCore;
@@ -94,7 +101,13 @@ public class ModItems {
     public static ItemStack nuggetDraconium;
     public static ItemStack nuggetAwakened;
 
+
+    public static ItemDE thaumCraftPortalSpawner;
     public static void init() {
+        thaumCraftPortalSpawner = new ThaumCraftPortalSpawner();
+
+
+
         draconicDestructionStaff = new DraconicDistructionStaff();
         draconicPickaxe = new DraconicPickaxe();
         draconicAxe = new DraconicAxe();
@@ -115,6 +128,13 @@ public class ModItems {
         wyvernChest = new WyvernArmor(WYVERN_ARMOR, 1, Strings.wyvernChestName);
         wyvernLeggs = new WyvernArmor(WYVERN_ARMOR, 2, Strings.wyvernLeggsName);
         wyvernBoots = new WyvernArmor(WYVERN_ARMOR, 3, Strings.wyvernBootsName);
+
+        //EverNife ones:
+        neutroniumT2Helm = new NeutroniumT2Armor( 0, "neutroniumt2_helmet");
+        neutroniumT2Chest = new NeutroniumT2Armor( 1, "neutroniumt2_chestplate");
+        neutroniumT2Leggs = new NeutroniumT2Armor( 2, "neutroniumt2_leggings");
+        neutroniumT2Boots = new NeutroniumT2Armor( 3, "neutroniumt2_boots");
+        //
 
         draconicCore = new DraconicCore();
         wyvernCore = new WyvernCore();

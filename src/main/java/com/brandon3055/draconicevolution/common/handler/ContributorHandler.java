@@ -142,7 +142,7 @@ public class ContributorHandler {
 
     //region Reading online contributors list
     private static void readFile() {
-        File cFile = new File(FileHandler.configFolder, "/draconicevolution/contributors.json");
+        File cFile = new File(FileHandler.configFolder, "/br/com/finalcraft/draconicevolution/contributors.json");
 
         if (!cFile.exists()) {
             LogHelper.error("Could not find contributors file");
@@ -216,7 +216,7 @@ public class ContributorHandler {
 
             try {
                 URL url = new URL("http://www.brandon3055.com/json/DEContributors.json");
-                File cFile = new File(FileHandler.configFolder, "/draconicevolution/contributors.json");
+                File cFile = new File(FileHandler.configFolder, "/br/com/finalcraft/draconicevolution/contributors.json");
 
                 InputStream is = url.openStream();
                 OutputStream os = new FileOutputStream(cFile);

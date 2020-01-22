@@ -40,19 +40,22 @@ public class ChaosImplosion implements IProcess {
         int ID = OD - 1;
         int size = (int) expansion;
 
-        for (int x = xCoord - size; x < xCoord + size; x++) {
-            for (int z = zCoord - size; z < zCoord + size; z++) {
-                double dist = Utills.getDistanceAtoB(x, z, xCoord, zCoord);
-                if (dist < OD && dist >= ID) {
-                    float tracePower = power - (float) (expansion / 10D);
-                    tracePower *= 1F + ((random.nextFloat() - 0.5F) * 0.2);
-                    ProcessHandler.addProcess(new ChaosImplosionTrace(worldObj, x, yCoord, z, tracePower, random));
+        if (worldObj.provider.dimensionId == 1){
+            for (int x = xCoord - size; x < xCoord + size; x++) {
+                for (int z = zCoord - size; z < zCoord + size; z++) {
+                    double dist = Utills.getDistanceAtoB(x, z, xCoord, zCoord);
+                    if (dist < OD && dist >= ID) {
+                        float tracePower = power - (float) (expansion / 10D);
+                        tracePower *= 1F + ((random.nextFloat() - 0.5F) * 0.2);
+                        ProcessHandler.addProcess(new ChaosImplosionTrace(worldObj, x, yCoord, z, tracePower, random));
+                    }
                 }
             }
+            isDead = expansion >= power * 10;
+            expansion = power * 10;
+        }else {
+            isDead = true;
         }
-
-        isDead = expansion >= power * 10;
-        expansion += 1;
     }
 
     private boolean isDead = false;

@@ -47,6 +47,7 @@ public class TeleporterMKI extends ItemDE {
 
     @Override
     public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
+        /*
         if (getLocation(stack) == null) {
             if (player.worldObj.isRemote)
                 player.addChatMessage(new ChatComponentTranslation("msg.teleporterUnSet.txt"));
@@ -71,6 +72,8 @@ public class TeleporterMKI extends ItemDE {
             player.addChatMessage(new ChatComponentTranslation("msg.teleporterLowHealth.txt"));
 
         return true;
+        */
+        return false;
     }
 
     @Override

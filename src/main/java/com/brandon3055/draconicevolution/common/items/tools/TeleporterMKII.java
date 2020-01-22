@@ -47,6 +47,7 @@ public class TeleporterMKII extends TeleporterMKI implements IHudDisplayItem {
 
     @Override
     public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
+        /*
         World world = player.worldObj;
         int fuel = ItemNBTHelper.getInteger(stack, "Fuel", 0);
 
@@ -76,6 +77,9 @@ public class TeleporterMKII extends TeleporterMKI implements IHudDisplayItem {
         }
 
         return true;
+        */
+
+        return false;
     }
 
     @Override

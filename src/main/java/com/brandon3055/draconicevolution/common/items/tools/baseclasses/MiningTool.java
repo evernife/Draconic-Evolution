@@ -13,9 +13,8 @@ import com.brandon3055.draconicevolution.common.lib.References;
 import com.brandon3055.draconicevolution.common.utills.IConfigurableItem;
 import com.brandon3055.draconicevolution.common.utills.IUpgradableItem;
 import com.brandon3055.draconicevolution.common.utills.ItemConfigField;
-import com.brandon3055.draconicevolution.integration.ModHelper;
 
-import cpw.mods.fml.common.Loader;
+import com.enderio.core.common.enchant.EnchantAutoSmelt;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MaterialLiquid;
 import net.minecraft.client.Minecraft;
@@ -23,20 +22,19 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.client.C07PacketPlayerDigging;
 import net.minecraft.network.play.server.S18PacketEntityTeleport;
 import net.minecraft.network.play.server.S23PacketBlockChange;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.event.world.BlockEvent;
@@ -163,7 +161,7 @@ public abstract class MiningTool extends ToolBase implements IUpgradableItem {
                 break;
         }
 
-        if (IConfigurableItem.ProfileHelper.getBoolean(stack, References.BASE_SAFE_AOE, false)) {
+        if (true || IConfigurableItem.ProfileHelper.getBoolean(stack, References.BASE_SAFE_AOE, false)) {
             for (int xPos = x - xMin; xPos <= x + xMax; xPos++) {
                 for (int yPos = y + yOffset - yMin; yPos <= y + yOffset + yMax; yPos++) {
                     for (int zPos = z - zMin; zPos <= z + zMax; zPos++) {
@@ -210,6 +208,66 @@ public abstract class MiningTool extends ToolBase implements IUpgradableItem {
         }
 
         return true;
+    }
+
+    public static boolean isEnderioEnabled = false;
+
+    protected void handleEnderIoSmelting(EntityPlayer player, ItemStack toolStack, List<ItemStack> drops, int fortune){
+        if (toolStack != null) {
+            boolean isSilkTouching = EnchantmentHelper.getEnchantmentLevel(Enchantment.silkTouch.effectId, toolStack) > 0;
+
+            if (isSilkTouching) return;
+
+            Map<Integer, Integer> enchants = EnchantmentHelper.getEnchantments(toolStack);
+            int level = -1;
+            for (int i : enchants.keySet()) {
+                Enchantment enchant = Enchantment.enchantmentsList[i];
+                if (enchant == EnchantAutoSmelt.INSTANCE) {
+                    level = enchants.get(i);
+                    break;
+                }
+            }
+            if (level >= 0) {
+                for (int i = 0; i < drops.size(); i++) {
+                    {
+                        ItemStack stack = drops.get(i);
+                        if (stack != null) {
+                            if (FurnaceRecipes.smelting().getSmeltingResult(stack) != null) {
+                                ItemStack furnaceStack = FurnaceRecipes.smelting().getSmeltingResult(stack).copy();
+                                //Fortune stuffs
+                                if (fortune > 0 && com.enderio.core.common.config.ConfigHandler.allowAutoSmeltWithFortune)
+                                    furnaceStack.stackSize *= (player.worldObj.rand.nextInt(fortune + 1) + 1);
+
+                                drops.set(i, furnaceStack);
+
+                                //XP (adapted vanilla code)
+                                int xp = furnaceStack.stackSize;
+                                float f = FurnaceRecipes.smelting().func_151398_b(furnaceStack);
+                                int j;
+
+                                if (f == 0.0F) {
+                                    xp = 0;
+                                } else if (f < 1.0F) {
+                                    j = MathHelper.floor_float((float) xp * f);
+
+                                    if (j < MathHelper.ceiling_float_int((float) xp * f) && (float) Math.random() < (float) xp * f - (float) j) {
+                                        ++j;
+                                    }
+
+                                    xp = j;
+                                }
+
+                                while (xp > 0) {
+                                    j = EntityXPOrb.getXPSplit(xp);
+                                    xp -= j;
+                                    player.worldObj.spawnEntityInWorld(new EntityXPOrb(player.worldObj, player.posX, player.posY + 0.5, player.posZ, j));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     protected void breakExtraBlock(ItemStack stack, World world, int x, int y, int z, int totalSize, EntityPlayer player, float refStrength, boolean breakSound, Map<Block, Integer> blockMap) {
@@ -264,8 +322,14 @@ public abstract class MiningTool extends ToolBase implements IUpgradableItem {
         if (!world.isRemote) {
         	
             block.onBlockHarvested(world, x, y, z, meta, player);
-            
-            ArrayList<ItemStack> drops = block.getDrops(world, x, y, z, meta, EnchantmentHelper.getFortuneModifier(player));
+
+            int fortuneLevel = EnchantmentHelper.getFortuneModifier(player);
+            ArrayList<ItemStack> drops = block.getDrops(world, x, y, z, meta, fortuneLevel);
+
+            if (isEnderioEnabled){
+                handleEnderIoSmelting(player,stack,drops,fortuneLevel);
+            }
+
             for (ItemStack is : drops) {
             	if (!player.inventory.addItemStackToInventory(is)) {
             			if (world.getGameRules().getGameRuleBooleanValue("doTileDrops") && !world.restoringBlockSnapshots){

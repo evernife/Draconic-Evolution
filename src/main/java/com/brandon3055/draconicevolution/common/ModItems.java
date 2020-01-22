@@ -1,7 +1,6 @@
 package com.brandon3055.draconicevolution.common;
 
 import br.com.finalcraft.draconicevolution.items.armor.NeutroniumT2Armor;
-import br.com.finalcraft.draconicevolution.util.ThaumCraftPortalSpawner;
 import com.brandon3055.draconicevolution.common.handler.ConfigHandler;
 import com.brandon3055.draconicevolution.common.items.*;
 import com.brandon3055.draconicevolution.common.items.armor.DraconicArmor;
@@ -101,13 +100,7 @@ public class ModItems {
     public static ItemStack nuggetDraconium;
     public static ItemStack nuggetAwakened;
 
-
-    public static ItemDE thaumCraftPortalSpawner;
     public static void init() {
-        thaumCraftPortalSpawner = new ThaumCraftPortalSpawner();
-
-
-
         draconicDestructionStaff = new DraconicDistructionStaff();
         draconicPickaxe = new DraconicPickaxe();
         draconicAxe = new DraconicAxe();
@@ -146,7 +139,7 @@ public class ModItems {
         dragonHeart = new DragonHeart();
         teleporterMKI = new TeleporterMKI();
         teleporterMKII = new TeleporterMKII();
-        tclogo = new Tclogo();
+        //tclogo = new Tclogo();
         sunFocus = new SunFocus();
         mobSoul = new MobSoul();
         enderArrow = new EnderArrow();

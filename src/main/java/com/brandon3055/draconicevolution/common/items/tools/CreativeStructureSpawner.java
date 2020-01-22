@@ -34,6 +34,7 @@ public class CreativeStructureSpawner extends ItemDE {
         list.add(new ItemStack(item, 1, 1));
     }
 
+    /*
     @Override
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
         if (world.isRemote) return stack;
@@ -127,4 +128,5 @@ public class CreativeStructureSpawner extends ItemDE {
         list.add("Spawns: " + name);
         list.add("This item can safely delete chaos crystals");
     }
+    */
 }

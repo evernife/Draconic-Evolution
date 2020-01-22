@@ -597,8 +597,14 @@ potion.de.swiftness.txt=Swiftness
 potion.de.fireImmune.txt=Fire Immunity
 potion.de.jumpBoost.txt=Jump Boost
 
-//FinalCraft CustomTexts
+//FinalCraft CustomTexts ----------------------------------------------------------------------------------------------------------------------------------------
+
 item.draconicevolution:neutroniumt2_helmet.name=§8§lCapacete de Neutronium §d§lTier2§8§l
 item.draconicevolution:neutroniumt2_chestplate.name=§8§lPeitoral de Neutronium §d§lTier2§8§l
 item.draconicevolution:neutroniumt2_leggings.name=§8§lCalças de Neutronium §d§lTier2§8§l
 item.draconicevolution:neutroniumt2_boots.name=§8§lBotas de Neutronium §d§lTier2§8§l
+
+item.draconicevolution:neutroniumt2_helmet.lore=§2Mais forte do que aquilo que é mais forte que o diamante!
+item.draconicevolution:neutroniumt2_chestplate.lore=§2Infundindo a armadura com neutronium e outras \nforças da natureza você aumenta sua resistencia!
+item.draconicevolution:neutroniumt2_leggings.lore=§2Você se sente mais forte e rápido agora, \nmais do que antes!
+item.draconicevolution:neutroniumt2_boots.lore=§2Você aprende a melhorar ainda mais suas botas, \nNeutronium deu ainda mais agilidade!

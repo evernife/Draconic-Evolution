@@ -26,6 +26,7 @@ public class ModHelper {
         isAvaritiaInstalled = Loader.isModLoaded("Avaritia");
         isRotaryCraftInstalled = Loader.isModLoaded("RotaryCraft");
         isGregTechInstalled = Loader.isModLoaded("gregtech");
+        ModHookEventHelper.initialize();
     }
 
     public static boolean isHoldingCleaver(EntityPlayer player) {

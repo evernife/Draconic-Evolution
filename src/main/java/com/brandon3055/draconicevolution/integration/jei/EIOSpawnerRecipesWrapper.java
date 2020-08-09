@@ -35,8 +35,8 @@ public class EIOSpawnerRecipesWrapper extends BlankRecipeWrapper implements ICus
 
         inputs.add(new ItemStack(brokenSpawner));
         inputs.add(new ItemStack(core));
-        output = new ItemStack(DEFeatures.stabilizedSpawner);
-        DEFeatures.stabilizedSpawner.setStackDataTier(output, SpawnerTier.getTierFromCore(core));
+        //output = new ItemStack(DEFeatures.stabilizedSpawner);
+        //DEFeatures.stabilizedSpawner.setStackDataTier(output, SpawnerTier.getTierFromCore(core));
     }
 
     @Override

@@ -289,10 +289,10 @@ public class DERecipes {
 
         RecipeManager.addRecipe(new RecipeDislocatorClone().setRegistryName(new ResourceLocation("draconicevolution:recipe_dislocator_clone")));
 
-        Item borkedSpawner = Item.REGISTRY.getObject(new ResourceLocation("enderio:item_broken_spawner"));
-        if (borkedSpawner != null) {
-            RecipeManager.addRecipe(new RecipeEIOStabilization(borkedSpawner).setRegistryName(new ResourceLocation("draconicevolution:eio_spawner")));
-        }
+        //Item borkedSpawner = Item.REGISTRY.getObject(new ResourceLocation("enderio:item_broken_spawner"));
+        //if (borkedSpawner != null) {
+        //    RecipeManager.addRecipe(new RecipeEIOStabilization(borkedSpawner).setRegistryName(new ResourceLocation("draconicevolution:eio_spawner")));
+        //}
 
         if (DEConfig.clearDataRecipes) {
             for (int i = 0; i < 9; i++) {

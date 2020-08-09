@@ -22,6 +22,7 @@ import net.minecraft.world.World;
  */
 public class ItemCore extends ItemBCore {
 
+    /*
     @Override
     public EnumActionResult onItemUse(EntityPlayer playerIn, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         TileEntity tile = world.getTileEntity(pos);
@@ -48,6 +49,7 @@ public class ItemCore extends ItemBCore {
 
         return super.onItemUse(playerIn, world, pos, hand, facing, hitX, hitY, hitZ);
     }
+    */
 
     @Override
     public boolean hasEffect(ItemStack stack) {

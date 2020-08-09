@@ -44,6 +44,7 @@ public class DislocatorAdvanced extends Dislocator implements IHudDisplay {
 
     //region Item Interact
 
+    /*
     @Override
     public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
         Teleporter.TeleportLocation location = getLocation(stack, player.world);
@@ -101,6 +102,7 @@ public class DislocatorAdvanced extends Dislocator implements IHudDisplay {
 
         return true;
     }
+     */
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {

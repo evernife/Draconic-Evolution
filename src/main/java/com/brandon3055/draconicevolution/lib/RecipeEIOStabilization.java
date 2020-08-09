@@ -100,20 +100,20 @@ public class RecipeEIOStabilization implements IRecipe {
             return ItemStack.EMPTY;
         }
 
-        ItemStack output = new ItemStack(DEFeatures.stabilizedSpawner);
+        //ItemStack output = new ItemStack(DEFeatures.stabilizedSpawner);
 
         String name = spawner.hasTagCompound() && spawner.getTagCompound().hasKey("entityId") ? spawner.getTagCompound().getString("entityId") : null;
         SpawnerTier tier = core.getItem() == DEFeatures.draconicCore ? BASIC : core.getItem() == DEFeatures.wyvernCore ? WYVERN : core.getItem() == DEFeatures.awakenedCore ? DRACONIC : CHAOTIC;
-        DEFeatures.stabilizedSpawner.setStackData(output, name, tier);
+      //  DEFeatures.stabilizedSpawner.setStackData(output, name, tier);
 
         cachedCore = core.getItem();
-        return output;
+        return null;//output;
     }
 
     @Nullable
     @Override
     public ItemStack getRecipeOutput() {
-        return new ItemStack(DEFeatures.stabilizedSpawner);
+        return null;//return new ItemStack(DEFeatures.stabilizedSpawner);
     }
 
     @Override

@@ -144,8 +144,8 @@ public class DEFeatures implements IModFeatures {
     @ModFeature(name = "reactor_component", itemBlock = ItemBlockBCore.class, cTab = 1)
     public static ReactorComponent reactorComponent = new ReactorComponent();
 
-    @ModFeature(name = "draconic_spawner", tileEntity = TileStabilizedSpawner.class, itemBlock = ItemBlockBCore.class)
-    public static StabilizedSpawner stabilizedSpawner = new StabilizedSpawner();
+    //@ModFeature(name = "draconic_spawner", tileEntity = TileStabilizedSpawner.class, itemBlock = ItemBlockBCore.class)
+    //public static StabilizedSpawner stabilizedSpawner = new StabilizedSpawner();
 
     @ModFeature(name = "draconium_chest", tileEntity = TileDraconiumChest.class, itemBlock = ItemBlockBCore.class)
     public static DraconiumChest draconiumChest = new DraconiumChest();
@@ -317,8 +317,8 @@ public class DEFeatures implements IModFeatures {
 
     //region Exotic Items
 
-    @ModFeature(name = "creative_exchanger", stateOverride = "misc#type=creative_exchanger", cTab = 1)
-    public static CreativeExchanger creativeExchanger = new CreativeExchanger();
+   // @ModFeature(name = "creative_exchanger", stateOverride = "misc#type=creative_exchanger", cTab = 1)
+    //public static CreativeExchanger creativeExchanger; = new CreativeExchanger();
 
     @ModFeature(name = "ender_energy_manipulator", cTab = 1)
     public static EnderEnergyManipulator enderEnergyManipulator = new EnderEnergyManipulator();

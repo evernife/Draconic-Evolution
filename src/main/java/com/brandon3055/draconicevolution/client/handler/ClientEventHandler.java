@@ -206,6 +206,7 @@ public class ClientEventHandler {
             return;
         }
 
+        /*
         if (!stack.isEmpty() && stack.getItem() == DEFeatures.creativeExchanger) {
 
             List<BlockPos> blocks = CreativeExchanger.getBlocksToReplace(stack, mc.objectMouseOver.getBlockPos(), world, mc.objectMouseOver.sideHit);
@@ -250,6 +251,7 @@ public class ClientEventHandler {
             GlStateManager.enableTexture2D();
             GlStateManager.disableBlend();
         }
+        */
 
         if (stack.isEmpty() || !(stack.getItem() instanceof MiningToolBase) || !ToolConfigHelper.getBooleanField("showDigAOE", stack)) {
             return;

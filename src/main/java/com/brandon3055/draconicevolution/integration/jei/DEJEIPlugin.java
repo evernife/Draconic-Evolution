@@ -63,7 +63,7 @@ public class DEJEIPlugin implements IModPlugin {
         LogHelper.dev("Register JEI");
         jeiHelpers = registry.getJeiHelpers();
 
-        registry.handleRecipes(EIOSpawnerRecipesWrapper.class, recipe -> recipe, VanillaRecipeCategoryUid.CRAFTING);
+        //registry.handleRecipes(EIOSpawnerRecipesWrapper.class, recipe -> recipe, VanillaRecipeCategoryUid.CRAFTING);
         registry.handleRecipes(IFusionRecipe.class, FusionRecipeWrapper::new, RecipeCategoryUids.FUSION_CRAFTING);
 
         if (DEFeatures.fusionCraftingCore.isBlockEnabled()){
@@ -147,6 +147,7 @@ public class DEJEIPlugin implements IModPlugin {
             }
         });
 
+        /*
         Item borkedSpawner = Item.REGISTRY.getObject(new ResourceLocation("enderio:item_broken_spawner"));
         if (borkedSpawner != null) {
             List<EIOSpawnerRecipesWrapper> wrappers = new ArrayList<>();
@@ -156,6 +157,7 @@ public class DEJEIPlugin implements IModPlugin {
             wrappers.add(new EIOSpawnerRecipesWrapper(jeiHelpers.getGuiHelper(), DEFeatures.chaoticCore, borkedSpawner));
             registry.addRecipes(wrappers);
         }
+         */
 
         iUpgradables.clear();
         Iterator<ItemStack> i = registry.getIngredientRegistry().getIngredients(ItemStack.class).iterator();

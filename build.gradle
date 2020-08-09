@@ -51,15 +51,15 @@ sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
 
 minecraft {
-    version = config.mc_version + "-" + config.forge_version
+    version = "1.12.2-14.23.5.2847"
     runDir = "run"
-    mappings = "${config.mappings}"
+    mappings = "snapshot_20171212"
     replace '${mod_version}', project.config.mod_version
     replaceIn "DraconicEvolution.java"
     makeObfSourceJar = false
 }
 
-String buildNo = "193"
+String buildNo = "193-evernifeV1"
 if (System.getenv("BUILD_NUMBER") != null) {
     buildNo = System.getenv("BUILD_NUMBER")
 }

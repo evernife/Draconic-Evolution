@@ -41,6 +41,7 @@ public class Dislocator extends ItemBCore {
         return false;
     }
 
+    /*
     @Override
     public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
         if (getLocation(stack, player.world) == null) {
@@ -50,12 +51,14 @@ public class Dislocator extends ItemBCore {
             return true;
         }
 
+
         if (entity instanceof EntityPlayer && !(this instanceof DislocatorAdvanced)) {
             if (player.world.isRemote) {
                 player.sendMessage(new TextComponentTranslation("msg.teleporterPlayerT1.txt"));
             }
             return true;
         }
+
 
         if (!entity.isNonBoss() || !(entity instanceof EntityLiving)) {
             return true;
@@ -92,6 +95,7 @@ public class Dislocator extends ItemBCore {
 
         return true;
     }
+    */
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {

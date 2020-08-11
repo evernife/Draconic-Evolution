@@ -1,5 +1,6 @@
 package com.brandon3055.draconicevolution;
 
+import br.com.finalcraft.draconicevolution.items.armor.NeutroniumTwoArmor;
 import com.brandon3055.brandonscore.blocks.BlockBCore;
 import com.brandon3055.brandonscore.blocks.BlockMobSafe;
 import com.brandon3055.brandonscore.blocks.ItemBlockBCore;
@@ -289,6 +290,18 @@ public class DEFeatures implements IModFeatures {
 
     @ModFeature(name = "wyvern_boots", cTab = 1, stateOverride = "armor#type=wyvernBoots")
     public static WyvernArmor wyvernBoots = new WyvernArmor(3, EntityEquipmentSlot.FEET);
+
+    @ModFeature(name = "neutroniumtwo_helm", cTab = 1, stateOverride = "armor#type=neutroniumtwoHelm")
+    public static NeutroniumTwoArmor neutroniumtwoHelm = new NeutroniumTwoArmor(0, EntityEquipmentSlot.HEAD);
+
+    @ModFeature(name = "neutroniumtwo_chest", cTab = 1, stateOverride = "armor#type=neutroniumtwoChest")
+    public static NeutroniumTwoArmor neutroniumtwoChest = new NeutroniumTwoArmor(1, EntityEquipmentSlot.CHEST);
+
+    @ModFeature(name = "neutroniumtwo_legs", cTab = 1, stateOverride = "armor#type=neutroniumtwoLegs")
+    public static NeutroniumTwoArmor neutroniumtwoLegs = new NeutroniumTwoArmor(2, EntityEquipmentSlot.LEGS);
+
+    @ModFeature(name = "neutroniumtwo_boots", cTab = 1, stateOverride = "armor#type=neutroniumtwoBoots")
+    public static NeutroniumTwoArmor neutroniumtwoBoots = new NeutroniumTwoArmor(3, EntityEquipmentSlot.FEET);
 
     @ModFeature(name = "draconic_helm", cTab = 1, stateOverride = "armor#type=draconicHelm")
     public static DraconicArmor draconicHelm = new DraconicArmor(0, EntityEquipmentSlot.HEAD);

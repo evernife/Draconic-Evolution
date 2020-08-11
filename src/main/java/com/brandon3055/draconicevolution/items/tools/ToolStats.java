@@ -14,6 +14,8 @@ public class ToolStats {
     //Common
     @ModConfigProperty(category = "Stat Tweaks", name = "wyvernBaseRFCapacity", requiresSync = true)
     public static int WYVERN_BASE_CAPACITY = 4000000;
+    @ModConfigProperty(category = "Stat Tweaks", name = "wyvernBaseRFCapacity", requiresSync = true)
+    public static int NEUTRONIUMTIER2_BASE_CAPACITY = 12000000;
     @ModConfigProperty(category = "Stat Tweaks", name = "draconicBaseRFCapacity", requiresSync = true)
     public static int DRACONIC_BASE_CAPACITY = 16000000;
 
@@ -131,6 +133,21 @@ public class ToolStats {
     @ModConfigProperty(category = "Stat Tweaks", name = "wyvernMaxRecieve", comment = "Allows you to adjust how fast Wyvern Armor is able to recieve RF/tick.", autoSync = true)
     @ModConfigProperty.MinMax(min = "0", max = "2147483647")
     public static int WYVERN_MAX_RECIEVE = 512000;
+
+    @ModConfigProperty(category = "Stat Tweaks", name = "neutroniumtier2BaseShieldCapacity", comment = "Allows you to adjust the total shield capacity of a full set of NeutroniumTier2 Armor.", autoSync = true)
+    @ModConfigProperty.MinMax(min = "0", max = "2147483647")
+    public static int NEUTRONIUMTIER2_BASE_SHIELD_CAPACITY = 384;
+    @ModConfigProperty(category = "Stat Tweaks", name = "neutroniumtier2ShieldRechargeCost", comment = "Allows you to adjust the amount of RF that NeutroniumTier2 Armor requires to recharge 1 shield point.", autoSync = true)
+    @ModConfigProperty.MinMax(min = "0", max = "2147483647")
+    public static int NEUTRONIUMTIER2_SHIELD_RECHARGE_COST = 1000;
+    @ModConfigProperty(category = "Stat Tweaks", name = "neutroniumtier2ShieldRecovery", comment = "Allows you to adjust how fast NeutroniumTier2 Armor is able to recover entropy.  Value is {this number}% every 5 seconds.", autoSync = true)
+    @ModConfigProperty.MinMax(min = "0", max = "2147483647")
+    public static double NEUTRONIUMTIER2_SHIELD_RECOVERY = 3D;
+    @ModConfigProperty(category = "Stat Tweaks", name = "neutroniumtier2MaxRecieve", comment = "Allows you to adjust how fast NeutroniumTier2 Armor is able to recieve RF/tick.", autoSync = true)
+    @ModConfigProperty.MinMax(min = "0", max = "2147483647")
+    public static int NEUTRONIUMTIER2_MAX_RECIEVE = 768000;
+
+
     @ModConfigProperty(category = "Stat Tweaks", name = "draconicBaseShieldCapacity", comment = "Allows you to adjust the total shield capacity of a full set of Draconic Armor.", autoSync = true)
     @ModConfigProperty.MinMax(min = "0", max = "2147483647")
     public static int DRACONIC_BASE_SHIELD_CAPACITY = 512;
